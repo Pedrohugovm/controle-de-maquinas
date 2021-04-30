@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\MaquinasController;
+use App\Http\Controllers\AtendimentosController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Maquinas;
+use App\Models\Locais;
+use App\Http\Controllers\LocaisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +27,7 @@ Auth::routes(['register' => true]);
 
 
 Route::resource('maquinas', MaquinasController::class);
+
+Route::resource('atendimentos', AtendimentosController::class);
+
+Route::resource('locais', LocaisController::class);

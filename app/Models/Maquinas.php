@@ -14,4 +14,12 @@ class Maquinas extends Model
      * @var array
      */
     protected $fillable = ['patrimonio', 'descricao', 'lotacao', 'sistema'];
+
+    public function antendimentos(){
+        return $this->hasMany(Atendimentos::class,'id_maquina');
+    }
+
+    public function local(){
+        return $this->belongsTo(local::class,'lotacao');
+    }
 }

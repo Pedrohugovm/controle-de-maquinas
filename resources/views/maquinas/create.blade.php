@@ -21,26 +21,32 @@
              <form method="post" action="{{ route('maquinas.store') }}">
                  @csrf
                  <div class="form-group">    
-                     <label for="patrimonio">patrimonio:</label>
+                     <label for="patrimonio">Patrimonio:</label>
                      <input type="text" class="form-control" name="patrimonio"/>
                  </div>
        
                  <div class="form-group">
-                     <label for="descricao">descrição:</label>
+                     <label for="descricao">Descrição:</label>
                      <input type="text" class="form-control" name="descricao"/>
                  </div>
-       
-                 <div class="form-group">
-                     <label for="lotacao">lotação:</label>
-                     <input type="text" class="form-control" name="lotacao"/>
+
+                 <div class="form-group">     
+                  <label for="local">Setor:</label>  
+                 <select class="form-control select2" name="lotacao">
+                  <option ></option>
+                  @foreach($locais AS $local)
+                  <option value="{{ $local->id }}" >{{ $local->setor }}</option>
+                  @endforeach
+                </select>
                  </div>
 
                  <div class="form-group">
-                  <label for="sistema">sistema:</label>
+                  <label for="sistema">Sistema:</label>
                   <input type="text" class="form-control" name="sistema"/>
               </div>
-                 
-                 <button type="submit" class="btn btn-primary-outline">Adicionar maquina</button>
+              <div class="d-flex justify-content-center">
+                 <button type="submit" class="btn btn-outline-primary">Adicionar maquina</button>
+              </div>
              </form>
          </div>
        </div>

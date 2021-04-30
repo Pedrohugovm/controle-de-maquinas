@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if(Auth::guest())
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -49,12 +51,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Entrar') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Esqueci minha senha') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>
@@ -63,4 +59,10 @@
         </div>
     </div>
 </div>
+@else
+  <div class="alert alert-warning" role="alert">
+    Você já está logado. <a href="#" class="alert-link"></a>
+  </div>   
+</div>   
+@endif
 @endsection

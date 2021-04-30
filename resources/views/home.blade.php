@@ -7,8 +7,6 @@
 			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 			  crossorigin="anonymous">
 </script>
-
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -20,7 +18,6 @@
                     $('#alerta').fadeOut()
                     }, 2500);
                 </script>
-
         </div>
     </div>
     <div class="container">

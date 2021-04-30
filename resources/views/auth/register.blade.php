@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@can('isAdmin')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -74,4 +75,15 @@
         </div>
     </div>
 </div>
+@endcan
+@can('isUser')
+<div class="alert alert-warning" role="alert">
+    Você precisa ser <a href="#" class="alert-link">administrador</a>. para efetuar essa ação.
+  </div>   
+@endcan
+@guest
+<div class="alert alert-warning" role="alert">
+    Você precisa ser <a href="#" class="alert-link">administrador</a>. para efetuar essa ação.
+  </div>
+@endguest
 @endsection
