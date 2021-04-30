@@ -27,7 +27,7 @@ class CriarTabelaAtendimentos extends Migration
 
         Schema::table('atendimentos', function (Blueprint $table) {
            
-            $table->foreign('id_maquina')->references('id')->on('maquinas');
+            $table->foreign('id_maquina')->references('id')->on('maquinas')->onDelete('cascade');
             
         });
     }

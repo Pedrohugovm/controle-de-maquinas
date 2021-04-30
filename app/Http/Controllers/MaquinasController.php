@@ -131,8 +131,7 @@ class MaquinasController extends Controller
      */
     public function destroy($id)
     {
-        $maquinas = Maquinas::find($id);
-        $maquinas->delete();
+        $maquinas = Maquinas::where('id', $id)->delete();
 
         return redirect('maquinas')->with('success', 'Máquina deletada!');
     }

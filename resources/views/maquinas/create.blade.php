@@ -42,8 +42,26 @@
 
                  <div class="form-group">
                   <label for="sistema">Sistema:</label>
-                  <input type="text" class="form-control" name="sistema"/>
+                <select class="form-control select2" aria-label=".form-select-lg example" name="sistema">
+                  <option selected value="Desconhecido">Desconhecido</option>
+                  <option value="Windows 10">Windows 10</option>
+                  <option value="Windows 8">Windows 8</option>
+                  <option value="Windows 7">Windows 7</option>
+                  <option value="Windows XP">Windows XP</option>
+                  <option value="Windows Vista">Windows Vista</option>
+                  <option value="Windows 98">Windows 98</option>
+                  <option value="Windows Server">Windows Server</option>
+                  <option value="Mac OS">Mac OS</option>
+                  <option value="Ubuntu">Ubuntu</option>
+                  <option value="Linux Mint">Linux Mint</option>
+                </select>
               </div>
+  
+
+                 {{-- <div class="form-group">
+                  <label for="sistema">Sistema:</label>
+                  <input type="text" class="form-control" name="sistema"/>
+              </div> --}}
               <div class="d-flex justify-content-center">
                  <button type="submit" class="btn btn-outline-primary">Adicionar maquina</button>
               </div>

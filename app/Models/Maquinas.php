@@ -22,4 +22,14 @@ class Maquinas extends Model
     public function local(){
         return $this->belongsTo(local::class,'lotacao');
     }
+
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($maquina) { // before delete() method call this
+             $maquina->antendimentos()->delete();
+             // do the rest of the cleanup...
+        });
+    }
 }

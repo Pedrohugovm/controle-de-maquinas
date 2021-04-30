@@ -21,7 +21,7 @@
                                         <form action="{{ route('maquinas.destroy', $maquina->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')" type="submit">Deletar</button>
+                                            <button class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar? Todos os atendimentos e dados da máquina serão apagados definitivamente.')" type="submit">Deletar</button>
                                         </form>
                                     @endcan
                                 </div>
@@ -50,7 +50,9 @@
                                     <td>Data de fechamento</td>
                                     <td>Status</td>
                                     <td>Editar</td>
+                                    @can('isAdmin')
                                     <td>Deletar</td>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,6 +70,7 @@
                                             <a href="{{ route('atendimentos.edit', $atendimento->id) }}"
                                                 class="btn btn-primary">Editar</a>
                                         </td>
+                                        @can('isAdmin')
                                         <td>
                                             <form action="{{ route('atendimentos.destroy', $atendimento->id)}}" method="post">
                                                 @csrf
@@ -75,7 +78,7 @@
                                                 <button class="btn btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')" type="submit">Deletar</button>
                                             </form>
                                         </td>
-
+                                        @endcan
                                     </tr>
                                 @endforeach
                             </tbody>

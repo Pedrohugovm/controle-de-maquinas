@@ -46,12 +46,6 @@
 </div>
 
         
-      {{-- <div class="d-flex justify-content-center">
-      <span>
-        {{$maquinas->links()}}
-
-      </span>
-      </div> --}}
     <br>
   <div>
     <div class="col-sm-12">
