@@ -17,7 +17,7 @@ class CreateMaquinasTable extends Migration
             $table->id();
             $table->string('patrimonio');
             $table->text('descricao');
-            $table->string('lotacao');
+            $table->bigInteger('lotacao');
             $table->text('sistema');
             $table->timestamps();
         });

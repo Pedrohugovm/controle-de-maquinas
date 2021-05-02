@@ -20,14 +20,14 @@ class CriarTabelaAtendimentos extends Migration
             $table->date('data_abertura');
             $table->date('data_fechamento');
             $table->string('status');
-            $table->unsignedBigInteger('id_maquina');
+            //$table->unsignedBigInteger('id_maquina');
             $table->timestamps();
             
         });
 
         Schema::table('atendimentos', function (Blueprint $table) {
            
-            $table->foreign('id_maquina')->references('id')->on('maquinas')->onDelete('cascade');
+            $table->foreignId('id_maquina')->references('id')->on('maquinas')->onDelete('cascade');
             
         });
     }

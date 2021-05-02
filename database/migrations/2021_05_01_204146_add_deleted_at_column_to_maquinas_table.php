@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleColumnToUsersTable extends Migration
+class AddDeletedAtColumnToMaquinasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role',  ['user', 'admin'])->default('user');
+        Schema::table('maquinas', function (Blueprint $table) {
+            $table->softDeletes();
+        });
+
+        Schema::table('maquinas', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 
@@ -25,8 +29,8 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            
+        Schema::table('maquinas', function (Blueprint $table) {
+            //
         });
     }
 }
