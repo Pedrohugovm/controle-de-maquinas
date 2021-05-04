@@ -125,8 +125,7 @@ class AtendimentosController extends Controller
      */
     public function destroy($id)
     {
-        $atendimentos = Atendimentos::find($id);
-        $atendimentos->delete();
+        $atendimentos = Atendimentos::where('id', $id)->delete();
 
         return redirect('atendimentos')->with('success', 'Atendimento deletado!');
     }

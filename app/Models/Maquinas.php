@@ -2,23 +2,33 @@
 
 namespace App\Models;
 
+use App\Models\Atendimentos;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
+
 class Maquinas extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
+    protected $cascadeDeletes = ['maquinas'];
+
+    protected $atendimentos = ['deleted_at'];
+
+
     protected $fillable = ['patrimonio', 'descricao', 'lotacao', 'sistema'];
 
     public function antendimentos(){
-        return $this->hasMany(Atendimentos::class,'id_maquina');
+        return $this->hasMany(Atendimentos::class, 'id_maquina');
     }
 
     public function local(){
@@ -30,7 +40,9 @@ class Maquinas extends Model
         parent::boot();
 
         static::deleting(function($maquina) { // before delete() method call this
-             $maquina->antendimentos()->delete();
+             $maquina->atendimentos()->delete();
+             $maquina->where('maquina->antendimentos->id_maquina', '=', $maquina->id)->delete();
+             $maquina->atendimento()->delete();
              // do the rest of the cleanup...
         });
     }
