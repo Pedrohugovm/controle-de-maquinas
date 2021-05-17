@@ -55,6 +55,7 @@
 <div class="btn btn-success btn-lg">
   Administrador
 </div>
+<br>
 @endcan
 
 
