@@ -25,7 +25,7 @@ class Maquinas extends Model
 
     protected $fillable = ['patrimonio', 'descricao', 'lotacao', 'sistema'];
 
-    public function antendimentos(){
+    public function atendimentos(){
         return $this->hasMany(Atendimentos::class, 'id_maquina');
     }
 
