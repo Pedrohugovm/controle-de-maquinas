@@ -98,7 +98,6 @@
             var dd = {
                 info: {
                     title: 'Relatório de máquina',
-                    author: 'anderson, o rei do rateio',
                 },
                 background: {
                     image: 'epd',
