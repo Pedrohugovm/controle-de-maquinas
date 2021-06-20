@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
-        <h1 class="display-3">Atualizar maquina</h1>
+        <h1 class="display-3">Atualizar máquina</h1>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -32,15 +32,25 @@
                 <input type="text" class="form-control" name="descricao" value="{{ $maquina->descricao}}" />
             </div>
 
-            <div class="form-group">
-                <label for="lotacao">Lotação:</label>
-                <input type="text" class="form-control" name="lotacao" value="{{ $maquina->lotacao }}" />
-            </div>
+            <div class="form-group">     
+                <label for="local">Setor:</label>  
+               <select class="form-control select2" name="lotacao">
+                @foreach($locais AS $local)
+                <option selected value="{{ $local->id }}" >{{ $local->setor }}</option>
+                @endforeach
+              </select>
+               </div>
+
 
             <div class="form-group">
                 <label for="sistema">Sistema Operacional:</label>
                 <input type="text" class="form-control" name="sistema" value="{{ $maquina->sistema }}" />
             </div>
+
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="id" value="{{$maquina->id}}"/>
+            </div>
+
             <button type="submit" class="btn btn-primary">Atualizar</button>
         </form>
     </div>

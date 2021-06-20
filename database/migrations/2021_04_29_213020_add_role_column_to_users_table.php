@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaquinasTable extends Migration
+class AddRoleColumnToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateMaquinasTable extends Migration
      */
     public function up()
     {
-        Schema::table('maquinas', function (Blueprint $table) {
-            $table->id();
-            $table->string('patrimonio');
-            $table->text('descricao');
-            $table->bigInteger('lotacao');
-            $table->text('sistema');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('role',  ['user', 'admin'])->default('user');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateMaquinasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maquinas');
+        Schema::table('users', function (Blueprint $table) {
+            
+        });
     }
 }

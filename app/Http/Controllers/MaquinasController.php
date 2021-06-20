@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
 use App\Models\Maquinas;
+use App\Models\Atendimentos;
+use App\Models\Locais;
 
 class MaquinasController extends Controller
 {
@@ -15,34 +15,17 @@ class MaquinasController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
-    {
+    public function index()
+    {   
 
-        $maquinas = Maquinas::where([
-            ['patrimonio', '!=', Null],
-            [function ($query) use ($request) {
-                if (($term = $request->term)) {                    
-                    $query->orWhere('patrimonio', 'LIKE', '%' . $term . '%')->get();
-                }
-            }]
-        ])
-        ->orderBy("id")
-        ->paginate(10);
+        $maquinas = Maquinas::join('locais', 'maquinas.lotacao', '=', 'locais.id')
+                    ->select('maquinas.*','locais.setor')
+                    ->orderBy("id", 'desc')->get();
+                    // ->paginate(10);
+            
 
-        $maquinas = Maquinas::where([
-            ['lotacao', '!=', Null],
-            [function ($query) use ($request) {
-                if (($term = $request->term)) {                    
-                    $query->orWhere('lotacao', 'LIKE', '%' . $term . '%')->get();
-                }
-            }]
-        ])
-        ->orderBy("id")
-        ->paginate(10);
 
         return view('maquinas.index', compact('maquinas'));
-    
-        
     }
 
     /**
@@ -50,9 +33,11 @@ class MaquinasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('maquinas.create');
+        $locais = Locais::get();
+
+        return view('maquinas.create', compact('locais'));
     }
 
     /**
@@ -88,8 +73,15 @@ class MaquinasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+        $atendimentos = Atendimentos::where('id_maquina', $id)->withCasts([
+            'data_fechamento' => 'datetime',
+            'data_abertura' => 'datetime',
+        ])->get();
+        $maquina = Maquinas::find($id);
+        $maquina->lotacao=Locais::find($maquina->lotacao,'setor');
+        $maquina->lotacao=$maquina->lotacao->setor;
+        return view('maquinas.show', compact('maquina', 'atendimentos'));
     }
 
     /**
@@ -100,8 +92,9 @@ class MaquinasController extends Controller
      */
     public function edit($id)
     {
+        $locais = Locais::get();
         $maquina = Maquinas::find($id);
-        return view('maquinas.edit', compact('maquina'));
+        return view('maquinas.edit', compact('maquina', 'locais'));
     }
 
     /**
@@ -127,7 +120,7 @@ class MaquinasController extends Controller
             $maquina-> sistema = $request->get('sistema');
             $maquina-> save();
 
-            return redirect('maquinas')->with('success', 'Maquina atualizada!');
+            return redirect()->route('maquinas.show',$request->get('id'))->with('success', 'Maquina atualizada!');
     }
 
     /**
@@ -138,10 +131,10 @@ class MaquinasController extends Controller
      */
     public function destroy($id)
     {
-        $maquinas = Maquinas::find($id);
-        $maquinas->delete();
+        $maquinas = Maquinas::where('id', $id)->delete();
 
         return redirect('maquinas')->with('success', 'Máquina deletada!');
     }
 
+   
 }

@@ -4,22 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaquinasTable extends Migration
+class AddDeletedAtColumnToMaquinasTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    /*public function up()
     {
         Schema::table('maquinas', function (Blueprint $table) {
-            $table->id();
-            $table->string('patrimonio');
-            $table->text('descricao');
-            $table->bigInteger('lotacao');
-            $table->text('sistema');
-            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::table('maquinas', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 
@@ -28,8 +27,10 @@ class CreateMaquinasTable extends Migration
      *
      * @return void
      */
-    public function down()
+    /*public function down()
     {
-        Schema::dropIfExists('maquinas');
-    }
+        Schema::table('maquinas', function (Blueprint $table) {
+            //
+        });
+    }*/
 }

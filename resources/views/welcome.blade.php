@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -20,7 +19,6 @@
             body {
                 font-family: 'Nunito';
             }
-
             #naviten{
                 font-size: 120%;
                 color: grey;
@@ -116,7 +114,6 @@ viewBox="0 0 44216 4500"
   </g>
  </g>
 </svg>
-
     
         </div>
     </body>
