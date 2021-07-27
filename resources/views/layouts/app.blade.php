@@ -124,16 +124,13 @@
 
         </main>
 
-        <center>    
-            <img style="max-width:30%;" src="https://www.epdvr.com.br/img/logo-epdvr-colorido.svg" alt="logo">
-        </center>
+        
     </div>
 
 
     <div class="navbar fixed-bottom"></div>
        <footer class="container-fluid" id='footerepd'>
         <p class="float-right"><a href="#">voltar ao topo</a></p>     
-        <p>&copy; 1983 - 2021  <img id='imgfooter'src="{{asset('img/logo-epdvr-alt-branco.svg')}}" alt="">  <a href="https://www.epdvr.com.br/">  Direitos reservados</a></p>
         </footer>
     </div>
 
