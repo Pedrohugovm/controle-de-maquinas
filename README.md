@@ -13,15 +13,15 @@ PostgreSQL ou equivalente.
 
 Listagem de máquinas:
 
-![alt text](https://i.imgur.com/U1Wv1N1.png)
+![alt text](https://imgur.com/DTzL1tt)
 
 Tela de detalhes de uma máquina:
 
-![alt text](https://i.imgur.com/2DLc9wl.png)
+![alt text](https://imgur.com/aJ8oFKA)
 
 Relatório gerado em PDF:
 
-![alt text](https://i.imgur.com/mXw2un7.png)
+![alt text](https://imgur.com/QRB173e)
 
 
 ## Contribuição
